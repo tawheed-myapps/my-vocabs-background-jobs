@@ -1,6 +1,5 @@
 import scheduler from 'node-schedule';
 import moment from 'moment';
-const { name: appName } = require("./../package.json");
 
 
 
@@ -22,12 +21,12 @@ const nowStr = () => {
 
 const main = () => {
     let service = {
-        appName,
+        appName: "my-vocabs-background-jobs",
         startDate: new Date(),
         numberOfExecutions: 0,
     };
 
-    console.log(`Service for ${appName} has started at ${moment(service.startDate).format(DATE_FORMAT)}`);
+    console.log(`Service for ${service.appName} has started at ${moment(service.startDate).format(DATE_FORMAT)}`);
 
     scheduler.scheduleJob(EVERY_TEN_SECONDS, () => {
         service.numberOfExecutions++;
